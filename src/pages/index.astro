@@ -22,7 +22,9 @@ const categories = Array.from(new Set(allCategories))
 			featuredPosts.map((post) => <FeaturedPost post={post}/>)
 		}
 		<hr class="w-full border border-teal-900 mb-16 max-sm:mb-10">
-		<CategoryList categories={categories} title="Recent Posts" />
+        <div class="pb-6 ">
+            <CategoryList categories={categories} title="Recent Posts" />
+        </div>
 		<div class="mb-32">
 			<PostList posts={posts}/>
 		</div>

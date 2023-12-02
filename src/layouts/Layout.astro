@@ -1,7 +1,9 @@
 ---
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
+import { Image } from 'astro:assets'
 import '@fontsource/cabin'
+
 
 interface Props {
 	title?: string
@@ -12,7 +14,7 @@ interface Props {
 const { 
 	title = 'Rhythm Nation',
 	description = 'A community of music producers and enthusiasts',
-	image = '/images/drums.png'
+	image = '../content/posts/images/drums.png'
 } = Astro.props;
 
 ---

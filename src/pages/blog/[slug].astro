@@ -1,5 +1,6 @@
 ---
 import {getCollection} from 'astro:content'
+import { Image, getImage } from 'astro:assets'
 import TOC from '../../components/TOC.astro'
 import type { CollectionEntry } from 'astro:content'
 import Layout from '../../layouts/Layout.astro'
@@ -27,14 +28,16 @@ type Props = {
 }
 const {post} = Astro.props
 const {Content, headings} = await post.render()
+const coverImageSource = (await getImage({src: post.data.image})).src
+console.log(post)
 ---
 
-<Layout title={post.data.title} image={post.data.image} description={post.data.description}>
+<Layout title={post.data.title} image={coverImageSource} description={post.data.description}>
     <Main>
         <a href="/blog" class="text-zinc-500 text-2xl mb-16 block underline">← Back to all posts</a>
 
         <H1 text={post.data.title} />
-        <img src={post.data.image} alt={post.data.title} class="rounded-2xl shadow-xl mb-28 aspect-thumbnail object-cover">
+        <Image src={post.data.image} alt={post.data.title}  width={1024} height={1024 / 1.5} class="rounded-2xl shadow-xl mb-28 aspect-thumbnail object-cover">
         <div class="mb-12">
             <TOC headings={headings}/>
         </div>
